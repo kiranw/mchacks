@@ -47,23 +47,30 @@
 			</div> <!-- /.modal-header -->
 
 			<div class="modal-body">
-				<form role="form">
+				
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" class="form-control" id="email" placeholder="Email">
+							<input type="text" name="email" class="form-control" id="email" placeholder="Email">
 							<label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
 						</div>
 					</div> <!-- /.form-group -->
+					<div class="error" id="invalidEmail" hidden> Try again! You entered an invalid email address.</br></div>
+					<div class="error" id="email_error" hidden>You haven't entered an email address!</br></div>
+					<br>
 
 					<div class="form-group">
 						Start Location:</br>
 						enter your location or use current location
 						<div class="input-group">
 							<label for="startloc" class="input-group-addon glyphicon glyphicon-lock"></label>
-							<input type="text" class="form-control" id="startloc" placeholder="enter location">
+							<input type="text" name="startloc" class="form-control" id="startloc" placeholder="enter location">
 						</div> <!-- /.input-group -->
-							<br><input type="button" onClick="getCoords()" value="Use Current Location"></input>
+							<br><button class="btn btn-primary" id="getCoords"  onClick="coord()">Use Current Location</button>
 					</div> <!-- /.form-group -->
+					<div class="error" id="invalidstart" hidden> Where are you though?</br></div>
+					<div class="error" id="mylocationerror" hidden>Geolocation is not supported by this browser. Enter manually!</br></div><br>
+
+
 
 					<div class="form-group">
 						Destination:</br>
@@ -72,14 +79,14 @@
 							<input type="text" class="form-control" id="destination" placeholder="enter destination">	
 						</div> <!-- /.input-group -->
 					</div> <!-- /.form-group -->
+					<br>
 
-
-				</form>
+				
 
 			</div> <!-- /.modal-body -->
 
 			<div class="modal-footer">
-				<button class="form-control btn btn-primary">Go!</button>
+				<button class="form-control btn btn-primary" onClick="submit()">Go!</button>
 
 			</div> <!-- /.modal-footer -->
 
@@ -96,6 +103,8 @@
 		<div id="background">
 				<img id="bg" src="graphics/background.jpg" />
 		</div>
+
+
 
 </body>
 </html>
