@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7259F0D9-3BDC-467E-8023-C0E6B24DC5CB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>safeRide</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E8B95531A795D38D5CF90ADC3C050FE4F2817B88</key>
+		<string>https://github.com/kiranw/mchacks.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>safeRide/safeRide.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E8B95531A795D38D5CF90ADC3C050FE4F2817B88</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kiranw/mchacks.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E8B95531A795D38D5CF90ADC3C050FE4F2817B88</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E8B95531A795D38D5CF90ADC3C050FE4F2817B88</string>
+			<key>IDESourceControlWCCName</key>
+			<string>mchacks</string>
+		</dict>
+	</array>
+</dict>
+</plist>
