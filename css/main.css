@@ -1,6 +1,8 @@
 body {
 	margin:0;
 	overflow:hidden;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
 }
 
 #bg {
@@ -15,22 +17,53 @@ body {
 #background {
 	z-index:-5;
 	display:block;
-	overflow:hidden;
+	
 	width:100%;
 	height:100%;
-	position:relative;
+	position: fixed;
+    bottom: 0px;
+    right: 0px;
+	/*position:relative;
+	left: -100%;*/
 	margin:0;
+	
+
 }
 
 #welcome {
-	position:absolute;
-	z-index:5;
+	margin: 0 auto;
 	color:white;
+	font-size: 200%;
+	top: 25%;
+    left: 12%;
+	width: 75%;
+    height: 50%;
+    position: absolute;
+    background-position: center;
+}
+
+#splash {
+    border-radius: 25px;
+    text-align: center;
+    z-index: 5;
+    padding: 10px;
+    position: absolute;
+    top: 12%;
+    left: 12%;
+
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 75%;
+    height: 75%;
+}
+
+.title {
 	font-size: 200%;
 }
 
 button {
-  padding: 5px 5px 5px 25px;
+  padding: 5px 25px 5px 25px;
   border: 1px solid #ffffff;
   color:white;
   text-decoration:none;
