@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Profile | Traveling Table</title>
+
+<link rel="shortcut icon" href="/graphics/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/graphics/favicon.ico" type="image/x-icon">
+<script>
+function randomPic() {
+    var x = Math.floor((Math.random() * 6) + 1);
+	document.write('<img src="/graphics/'+x.toString()+'.png" class="avatar"  /> ');
+}
+</script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/javascripts/deleterecipes.js"></script>
+
+<script type="text/javascript">
+var veg;
+var vegan;
+var allergies;
+var glut;
+var username;
+var recipes;
+var recID;
+
+$(document).ready(function(){
+    $.ajax({
+        type: 'POST',
+        url: "/getRestrictions",
+        context: document.body,
+        success: function(data){
+                //console.log()
+                var veg = data.vegetarian
+                var vegan = data.vegan
+                var allergies = data.allergies
+                var glut = data.gluten_free
+                var username = data.username
+                var recipes = data.recipe_array
+                $("#welcome").html("Welcome, "+username);
+
+
+                    if (recipes.length===0){
+                      $("#status").html("You haven't uploaded any recipes!");
+                      $(".deletebutton").hide();
+
+                    } else {
+                      rewrite = ''
+                      for (var i=0;i<recipes.length;i++) {
+                        rewrite = rewrite + "<li id='"+recipes[i][1]+"'><a onclick='profileresult();' class='recIDselector' style='line-height:150%' id='"+recipes[i][1]+"'>"+recipes[i][0]+"</a></li>"
+                      }
+                      $(".recipes").html(rewrite);
+                    }
+
+
+                if (veg===true) {
+                  $("#c1").html('<label><input type="checkbox" name="vegetarian" id="vegetarian" value="" checked>Vegetarian</label>')
+                };
+                if (vegan===true) {
+                  $("#c2").html('<label><input type="checkbox" name="vegan" id="vegan" value="" checked>Vegan</label>')
+                };
+                if (allergies===true) {
+                  $("#c4").html('<label><input type="checkbox" name="allergies" id="allergies" value="" checked>No peanuts/soy</label>')
+                }
+                if (glut===true) {
+                  $("#c3").html('<label><input type="checkbox" name="gluten-free" id="gluten-free" value="" checked>Gluten-Free</label>')
+
+
+              //console.log(username);
+              //console.log(recipes.length);
+
+
+                };
+
+
+            }});
+
+
+    });
+/*
+$(".recIDselector").click(function() {
+  alert(clicked)
+}
+*/
+
+
+
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<link href='https://fonts.googleapis.com/css?family=News+Cycle|Raleway:400,300,100' rel='stylesheet' type='text/css'>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/javascripts/profile_map_scripts.js"></script>
+<script src="/javascripts/validation.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css"/>
+
+
+</head>
+
+<body>
+
+
+<form onSubmit="deletevalidate(event);">
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" id = "close_modal" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+              <h2 class="modal-title" id="myModalLabel">Confirm Delete</h2>
+            </div>
+
+      <div class="modal-body" id="login_form"> Are you sure you want to delete your recipe?
+
+              <input type="submit" name="submit" class="button button2" id="submit_btn" value="Mmhm" /><br>
+              <input data-dismiss="modal" aria-hidden="true" class="submit_btn button button2" id="close_modal" value="Nope" /><br>
+      </div>
+
+      <!--div id='loginmessage' class="hidden" style="color:black;text-align:center"><h3>Login Form Submitted!</h3><br><br></div>-->
+    </div>
+  </div>
+</div></form><iframe id="uploader_iframe" name="uploader_iframe" style="display: none;"></iframe>
+
+
+
+<div id="profile">
+            <div id="profcontents">
+
+            <h2 id="welcome" style="text-align:center">Welcome, </h2>
+
+            <script type="text/javascript">randomPic();</script></br>
+            <h4 id="status" style="text-align:center">Check out the recipes you uploaded!</h4><br>
+            <ul><div class="recipes"></div>
+            </ul>
+     
+
+
+
+ 
+
+            </div>
+            <div id="dietprefs">
+              <h4>Want to make your experience more personalized? You can choose which filters you want for any future searches you make.</h4><br>
+            <p>Edit your dietary preferences:</p>
+                      <div class="checkbox" id="c1">
+                        <label><input type="checkbox" name="vegetarian" id="vegetarian" value="">Vegetarian</label>
+                      </div>
+                      <div class="checkbox" id="c2">
+                        <label><input type="checkbox" name="vegan" id="vegan" value="">Vegan</label>
+                      </div>
+                      <div class="checkbox" id="c3">
+                        <label><input type="checkbox" name="gluten-free" id="gluten-free" value="">Gluten-Free</label>
+                      </div>
+                      <div class="checkbox" id="c4">
+                        <label><input type="checkbox" name="allergies" id="allergies" value="">No peanuts/soy</label>
+                      </div>
+                      <div id="submitted" hidden>Preferences submitted! We'll update those for you when you search.</div>
+                      <input type="submit" name="submit" class="dietprefbutton btn-large" id="submit_btn2" value="Submit changes" />
+
+            </div>
+</div>
+
+<div id="display">
+            <h3><div class="recipetitle">Click on a recipe or marker to see what you've been bringing to the table.</div></h3>
+            <div class="recipeimage"></div>
+            <div class="viewsvotes"></div>
+            <div class="est_time"></div>
+            <div class="recipetype"></div><br>
+            <div class="ingredients"></div>
+            <div class="instructions"></div>
+            <div class="extra_info"></div>
+            <!--div class="vegcheck"></div>
+            <div class="vegancheck"></div>
+            <div class="gfcheck"><br></div>
+            <div class="allergiescheck"></div><br-->
+            <a href="#" type="submit" name="submit" class="deletebutton btn-large pinklink" data-toggle="modal" data-target="#deleteModal" value="Delete Recipes" hidden>Delete Recipe</a>
+  </div>
+
+
+
+<div id="back"><a id="pinklink" href="/">take me back!</a></div>
+<div id="map"> </div>
+
+
+<!--script type="text/javascript">
+jQuery(".informatiemelding").setTimeout(function () {
+   $(this).fadeOut('slow');
+});
+</script-->
+
+
+</body>
+</html>

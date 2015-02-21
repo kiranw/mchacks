@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Add a Recipe | Traveling Table</title>
+
+<link rel="shortcut icon" href="/graphics/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/graphics/favicon.ico" type="image/x-icon">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+    
+    
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<!--END LOGIN-->
+<script src="/javascripts/mapscripts.js"></script>
+<script src="/javascripts/validation.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/javascripts/recipe.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/recipe.css"/>
+<script src="/javascripts/smooth-scroll.js"></script>
+<script src="/javascripts/jquery.ui.widget.js"></script>
+<script src="/javascripts/jquery.iframe-transport.js"></script>
+<script src="/javascripts/jquery.fileupload.js"></script>
+<script src="/javascripts/addInput.js"></script>
+   
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(window).scrollTop() > 300){
+            $('#mapinstr').fadeOut(500);
+            $('#recipeinstr').fadeIn(500)
+        }
+    else if ($(window).scrollTop() < 300){
+            $('#mapinstr').fadeIn(500);        
+            $('#recipeinstr').fadeOut(500)
+        }
+    });
+});
+</script>
+
+
+
+</head>
+
+  <body>
+    <div class="page">
+      <div id="bar">
+        <div class="fixedtop2"><strong>Recipe Form:</strong> fill out the fields with your dish information</div>
+
+
+      <div id="recipeinstr" class="fixedtop" id="instructionbar" hidden><strong>Recipe Form:</strong> fill out the fields with your dish information<div class="scroll2"><a data-scroll data-options='{ "easing": "easeInOutQuad" }' id="top"><button><img src="graphics/scrollup.png" style="max-width:90%;"/></button></a></div></div>
+      
+        <div id="mapinstr" class="fixedtop" id="instructionbar"><!--img src="/graphics/addsmall.png" /--><strong>Marker Placement:</strong> place a marker on the region your recipe comes from and click on the down arrow to continue</div>      
+        <a href="/" style="right:0" id="cancel">Cancel Recipe</a>
+      
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="mapsection">
+        <div id="map"></div>
+    <div class="scroll"><a data-scroll data-options='{ "easing": "easeInOutQuad" }' href="#recipe_form"><button><img src="graphics/scroll copy.png" style="max-width:90%;"/></button></a></div>
+    </div>
+    
+
+            <!--<div id="form">-->
+      <!--<h3>Add your recipe</h3>-->
+           
+        <!--<h3 class="modal-title" id="myModalLabel" name="#recipe_form">Add your recipe</h3>-->
+            <div class="modal-body" id="recipe_form">
+
+              
+ <!--               <form method="post" name="recipe" action="">
+                    <fieldset>--></br></br></br></br>
+
+                        <label for="recipe_name">Recipe Name: </label></br>
+                        <input type="text" name="recipe_name" id="rec_name" placeholder=""  /></br>
+                        <label class="error" for="recipe_name" id="recipe_name_error"> This field is required!</label></br><br>
+
+
+                        
+                        <div class="form-group">
+                          <label for="sel1">What kind of dish is this?</label>
+                          <select class="form-control" id="sel1" name="dish_type">
+                            <option name="choose">Choose one!</option>
+                            <option name="beverage">Beverage</option>
+                            <option name="appetizer">Appetizer/Side</option>
+                            <option name="entree">Entree</option>
+                            <option name="dessert">Dessert</option>
+                          </select>
+                          <label class="error" for="dish_type" id="dish_type_error">Choose one from the dropdown menu above! </label>
+                        </div>
+                        </br>
+
+
+                        <div><label for="est">Estimated preparation+cook time in hours: </label>
+                          <input type="text" onkeypress="return isNumberKey(event)" step="any" name="est_time" id="est_time" placeholder=""  />
+                        <label class="error" for="est_time" id="est_time_error1">This field is required!</label>
+                        <label class="error" for="est_time" id="est_time_error2">Submit a number!</label>
+                      </br></br>
+
+
+                          <div id="dynamicInput">
+                            <label>Ingredients: </label><br>
+                                <li><input type="text" name="boxinput1" placeholder="1 egg" onkeypress="return separateKey(event)" id="one"/></li>
+                           </div><label class="error" for="ingredient" id="ingredient_error">Enter your ingredients! </label>
+                           <br><input id="submit_btn" style="float:left" type="button" value="Add another ingredient" onClick="addInputbox('dynamicInput');">
+                           <input id="submit_btn" style="float:left" type="button" value="Remove one" onClick="removeInputbox();">
+                           <br><br><br>
+
+
+
+                      
+                           <div id="dynamicInput2">
+                            <label>Recipe Instructions: </label><br>
+                                Step 1<br><textarea type="text" class="bigger" name="input1"  id="two" onkeypress="return separateKey(event)" ></textarea><br>
+                           </div><label class="error" for="instructions" id="instruction_error">Enter your recipe instructions! </label><br>
+                           <input id="submit_btn" style="float:left" type="button" value="Add next instruction" onClick="addInput('dynamicInput2');">
+                           <input id="submit_btn" style="float:left" type="button" value="Remove" onClick="removeInput();">
+                           
+                           <br><br><br>
+                      
+
+
+
+                        <label for="rec_image">Image: </label></br>
+                        <!--https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin-->
+<!--                         <input id="fileupload" type="file" name="files[]" data-url="" ><div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div> -->
+
+                        <input type="text" name="recipe_image" id="recipe_image" placeholder="image url"  required /></br>
+                        <label class="error" for="recipe_image" id="recipe_image_error"> This field is required!</label>
+                        <label class="error" for="recipe_image" id="recipe_image_error234"> Only .png .jpg .jpeg and .gif URLs!</label></br></br>
+                        
+                        <label for="recipe_checkbox">Dietary restrictions satisfied: </label></br>
+                            <div class="checkbox">
+                              <label><input type="checkbox" name="vegetarian" value="">Vegetarian</label>
+                            </div>
+                            <div class="checkbox">
+                              <label><input type="checkbox" name="vegan" value="">Vegan</label>
+                            </div>
+                            <div class="checkbox">
+                              <label><input type="checkbox" name="gluten-free" value="">Gluten-Free</label>
+                            </div>
+                            <div class="checkbox">
+                              <label><input type="checkbox" name="allergies" value="">No peanuts/soy</label>
+                            </div><br><Br>
+
+
+                            <div><label for="extra_info">Comments/Extra information:</label><br>
+                          <textarea type="text" name="extra_info" id="extra_info" class="bigger" placeholder="Anything else?"  /></textarea>
+                        
+                      </br></br>
+                      <label class="error" for="submit" id="marker_error1"> Choose the origin of your recipe on the map at the top of the page!</label></br>
+                      <label class="error" for="submit" id="marker_error2"> Choose another location! A recipe already exists there.</label></br>
+                        <input for="submit_stuff" type="submit" name="submit" class="recipebutton" id="submit_btn3" value="Submit Recipe" />
+<!--                      </fieldset>
+                  </form>-->
+            </div>
+
+    </div>
+
+    <script>
+        smoothScroll.init({
+          speed: 1000,
+          easing: 'easeInOutCubic',
+          offset: 0,
+          updateURL: true,
+          callbackBefore: function ( toggle, anchor ) {},
+          callbackAfter: function ( toggle, anchor ) {}
+        });
+    </script>
+
+  </body>
+</html>
