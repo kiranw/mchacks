@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mandrill/mandrill": "1.0.*",
+        "mailgun/mailgun-php": "~1.7.2"
+    }
+}
