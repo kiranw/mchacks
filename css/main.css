@@ -201,7 +201,17 @@ font-size: 105%;
 
 
 #map {
-	height:100%;
+	height:90%;
 	width:100%;
+	margin-top:0;
+	float:left;
 }
 
+#bottom_bar{
+	height:10%;
+	margin-bottom:0;
+	width:100%;
+	background-color:black;
+	float:left;
+	z-index: 10;
+}
