@@ -1,5 +1,12 @@
 <html>
-<head></head>
+<head>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript">
+	console.log("i am here!");
+	var $phonenum=localStorage.friendemail;
+	var $bodytext=localStorage.phonemsg;
+	</script>
+</head>
 <body>
 <ul> 
 <?php 
@@ -18,7 +25,9 @@ $message = $client->account->messages->sendMessage(
 );
 print $message->sid;
 }
-send("OOOOO");
+echo $phonenum;
+echo $bodytext;
+send(phonenum,bodytext);
 ?>
 </ul> 
 </body>
