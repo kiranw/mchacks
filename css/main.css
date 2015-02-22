@@ -195,3 +195,9 @@ font-size: 105%;
      border-top-right-radius: 5px;
  }
 
+
+#map {
+	height:100%;
+	width:100%;
+}
+
