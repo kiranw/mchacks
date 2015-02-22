@@ -1,7 +1,5 @@
 var email;
-var startloc;
-var endLat;
-var endLong;
+
 var itsOkay=false;
 
 function hideSplash() {
@@ -19,7 +17,8 @@ function coord() {
 	
 
 function showPosition(position) {
-		startloc=[position.coords.latitude,position.coords.longitude]
+		startLat=position.coords.latitude;
+		startLong= position.coords.longitude;
 		console.log("getting");
 		itsOkay=true;
 		$("#startloc").val("Position Recorded");
@@ -28,8 +27,6 @@ function showPosition(position) {
 
 function submit() {
 	$('.error').hide();
-	
-
 	email = $("input[name=email]").val();
 	console.log("email given: "+ email)
       if (email === "") {
@@ -38,31 +35,39 @@ function submit() {
         return false;
       }
 
-	if (/^[0-9A-Za-z]+@.$/.test(email)) {
-		console.log("no invalid character")
-		if (email.indexOf('@') > -1) {
+	//if (/^[0-9A-Za-z]+@$/.test(email)) {
+		//console.log("no invalid character")
+		//if (email.indexOf('@') > -1 && email.indexOf('.')) {
+		if ((email.indexOf('.') > -1) && email.indexOf("@" > -1)) {
 		       console.log("we gud")
 		} else {
 		$("#invalidEmail").show();
 		$("input#email").focus();
 	    return false;	
 		}
-	} else {
+	/*} else {
 		$("#invalidEmail").show();
 		$("input#email").focus();
 	    return false;
-	};
+	};*/
 
     if (!itsOkay){
-		startloc = $("input[name=startloc]").val();
-		console.log("start given: "+ startloc);
-	      if (startloc === "") {
+		//startloc = $("input[name=startloc]").val();
+		//console.log("start given: "+ startloc);
+	      if (startLat === undefined || startLong === undefined) {
 	        $("#invalidstart").show();
 	        $("input#startloc").focus();
 	        return false;
 	      }
 	}
 
+	if (endLat===undefined || endLong===undefined){
+		$("#invalidstop").show();
+		$("input#destination").focus();
+		return false;
+	}
+	console.log(startLat,startLong,endLat,endLong)
+	window.location.href = "main.html";
 
 };
 

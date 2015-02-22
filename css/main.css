@@ -82,3 +82,47 @@ button:hover{
 	font-weight:100;
 }
 
+.pac-container{
+	z-index:10 !important;
+}
+
+.pac-item{
+		font-family:'Source Sans Pro', sans-serif;
+}
+
+.pac-item-query{
+		font-family:'Source Sans Pro', sans-serif;
+}
+
+.modal {
+	z-index:1 !important;
+}
+
+input[type="text"], textarea {
+outline: none;
+border:none !important;
+border-color:black !important;
+border-bottom:1px solid !important;
+background-color:transparent;
+box-shadow:none !important;
+border-radius:0px !important;
+/*border:1px solid #ccc !important;*/
+}
+
+.modal-body {
+   background-color: rgba(255,255,255,0.2) !important;
+}
+
+.modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: rgba(255,255,255,0.2);
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+
+

@@ -5,21 +5,168 @@
 <link rel="shortcut icon" href="/graphics/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/graphics/favicon.ico" type="image/x-icon">
 
-<link rel="stylesheet" href="/stylesheets/animate.min.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
-<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+<!--script src="https://maps.google.com/maps/api/js?sensor=true"></script-->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
-<script src="js/smooth-scroll.js"></script>
 <script src="js/functions.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Quattrocento+Sans|Oxygen:300' rel='stylesheet' type='text/css'></head>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400|Quattrocento+Sans|Oxygen:300' rel='stylesheet' type='text/css'>
 
 
-<body>
+
+
+
+
+
+
+
+
+
+
+
+<!---======================================
+	THERE EXISTS AN ERROR WHERE BOTH WHEN USING AUTOCOMPLETE RETURN SAME VALS FIX AT SOME POINT
+-->
+
+
+
+
+<script>
+
+var endLat;
+var endLong;
+
+
+
+var placeSearch, autocomplete;
+function initialize() {
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */(document.getElementById('destination')),
+      { types: ['geocode'] });
+  // When the user selects an address from the dropdown,
+  // populate the address fields in the form.
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    fillInAddress();
+  });
+}
+// [START region_fillform]
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+            //console.log(place.geometry.location.lat());
+            //console.log(place.geometry.location.lng());
+            endLat = place.geometry.location.lat();
+            endLong = place.geometry.location.lng();
+            console.log(endLat+" , "+endLong)
+}
+// [END region_fillform]
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+// [END region_geolocation]
+    </script>
+
+
+
+<script>
+
+var startLat;
+var startLong;
+
+
+var placeSearch, autocomplete2;
+function initialize2() {
+	initialize();
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  autocomplete2 = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */(document.getElementById('startloc')),
+      { types: ['geocode'] });
+  // When the user selects an address from the dropdown,
+  // populate the address fields in the form.
+  google.maps.event.addListener(autocomplete2, 'place_changed', function() {
+    fillInAddress();
+  });
+}
+// [START region_fillform]
+function fillInAddress2() {
+  // Get the place details from the autocomplete object.
+  var place2 = autocomplete2.getPlace();
+            //console.log(place.geometry.location.lat());
+            //console.log(place.geometry.location.lng());
+            startLat = place2.geometry.location.lat();
+            startLong = place2.geometry.location.lng();
+            console.log(startLat+" , "+startLong)
+}
+// [END region_fillform]
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate2() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation2 = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      var circle2 = new google.maps.Circle({
+        center: geolocation2,
+        radius: position.coords.accuracy
+      });
+      autocomplete2.setBounds(circle2.getBounds());
+    });
+  }
+}
+
+
+// [END region_geolocation]
+    </script>
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body  onload="initialize2()">
 	<div id="splash">
 		<div id="welcome">
 					<span class="title" >SafeRide</span>
@@ -43,8 +190,8 @@
 				
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" name="email" class="form-control" id="email" placeholder="Email">
-							<label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
+							<input type="text" name="email" class="form-control" id="email" placeholder="Email" autocomplete='off'/>
+							
 						</div>
 					</div> <!-- /.form-group -->
 					<div class="error" id="invalidEmail" hidden> Try again! You entered an invalid email address.</br></div>
@@ -55,10 +202,11 @@
 						<br>Start Location:</br>
 						enter your location or use current location
 						<div class="input-group">
-							<label for="startloc" class="input-group-addon glyphicon glyphicon-lock"></label>
+							
 							<input type="text" name="startloc" class="form-control" id="startloc" placeholder="enter location">
+							<button class="btn btn-primary" id="getCoords"  onClick="coord()">Use Current Location</button>
 						</div> <!-- /.input-group -->
-							<br><button class="btn btn-primary" id="getCoords"  onClick="coord()">Use Current Location</button>
+							
 					</div> <!-- /.form-group -->
 					<div class="error" id="invalidstart" hidden> Where are you though?</br></div>
 					<div class="error" id="mylocationerror" hidden>Geolocation is not supported by this browser. Enter manually!</br></div><br>
@@ -68,10 +216,11 @@
 					<div class="form-group">
 						Destination:</br>
 						<div class="input-group">
-							<label for="destination" class="input-group-addon glyphicon glyphicon-lock"></label>
-							<input type="text" class="form-control" id="destination" placeholder="enter destination">	
+							
+							<input type="text" onFocus="geolocate()" class="form-control" id="destination" placeholder="enter destination">	
 						</div> <!-- /.input-group -->
 					</div> <!-- /.form-group -->
+					<div class="error" id="invalidstop" hidden>Choose a valid destination!<br></div>
 					<br>
 
 				
