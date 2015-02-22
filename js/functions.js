@@ -103,7 +103,7 @@ function submit2() {
         return false;
       }
 
-  if ((friendemail.indexOf('.') > -1) && friendemail.indexOf("@" > -1)) {
+  if ((/^\d+$/.test(friendemail))) {
            console.log("we gud")
     } else {
     $("#friendinvalidEmail").show();
@@ -111,8 +111,24 @@ function submit2() {
       return false; 
     }
 
+    friendemail = "+"+friendemail;
     localStorage.friendname = friendname;
     localStorage.friendemail = friendemail;
+
+    var phonemsg = "http://maps.google.com/maps?q="+startLat2+","+startLong2;
+    localStorage.phonemsg = phonemsg;
+
+    $.ajax({
+      type:"GET",
+      url:"test5.php", 
+      complete: function (response) {
+        //send(friendemail,phonemsg);
+        console.log("success");
+        return false;
+      }
+    }) 
+
+
 }
 
 /*===================================================================================================================
