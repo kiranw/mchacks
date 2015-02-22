@@ -29,12 +29,75 @@
 
 <body onLoad="initializeMap();">
 
-<div id="map"></div>
-<div id="bottom bar">
-		<table>
 
+<div id="wrapper">
+	<div id="map"></div>
+	<div id="bottom_bar">
+		<table style="width:100%;">
+		  <tr id="labels">
+		    <td width="25%">ETA</td>
+		    <td width="40%">Expected Fare</td> 
+		    <td   width="35%" rowspan="2"><button id="button2" data-toggle="modal" class="special" data-target="#shareModal">share ride</button></td>
+		  </tr>
+		  <tr id="vars">
+		    <td id="eta">0:00</td>
+		    <td id="fare">$0.00</td> 
+
+		  </tr>
 		</table>
+	</div>
 </div>
+
+<div class="modal fade" id="dangerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header", style = "text-align: center">
+				<h4 class="modal-title" id="myModalLabel">Danger Detected</h4>
+			</div> <!-- /.modal-header -->
+			<div class="modal-body">
+				<div id="danger">We have detected that you are taking an indirect route and entering an unsafe area. </br></div>
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+				<button class="dangerbutton1" id="gosmall" onClick="hideDanger()">DISMISS</button>
+				<button class="dangerbutton2" id="gosmall" onClick="submit()">CALL EMERGENCY SERVICES</button>
+			</div> <!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header", style = "text-align: center">
+				<h4 class="modal-title" id="myModalLabel">Share your Journey</h4>
+			</div> <!-- /.modal-header -->
+			<div class="modal-body">
+				<div id="description">Notify a friend of your trip status via an email containing a map of your journey.</br></div>
+				<div class="form-group">
+						<br>Name:</br>
+						<div class="input-group">
+							<input type="text" name="friendname" class="form-control" id="friendname" placeholder="enter your friend's name">
+						</div> <!-- /.input-group -->
+						<br>
+						<br>Phone Number:</br>
+						<div class="input-group">
+							<input type="text" name="friendemail" class="form-control" id="friendemail" placeholder="enter your friend's number">
+						</div> <!-- /.input-group -->
+						<div class="error" id="friendinvalidEmail" hidden>Try again! You entered an invalid phone number.<br></div>
+						<div class="error" id="friendemail_error" hidden>You haven't entered a phone number!</br></div>
+						<br>
+					</div> <!-- /.form-group -->
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+				<button class="form-control btn btn-primary" id="go" onClick="submit2()">SEND TRIP INFORMATION</button>
+			</div> <!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 
 </body>
 </html>
