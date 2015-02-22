@@ -139,6 +139,21 @@ button:hover{
 	color: white;
 }
 
+
+#button2{
+	padding: 5px 5px 5px 5px;
+  border: 1px solid #ffffff;
+  color:white;
+  text-decoration:none;
+  background: transparent;
+}
+
+#button2:active{
+		text-decoration: none;
+	background:rgba(255, 255, 255, 0.2);
+	color: white;
+}
+
 .error {
 	text-decoration:none;
 	color:#FFAC78;
@@ -237,5 +252,43 @@ font-size: 105%;
 #map {
 	height:100%;
 	width:100%;
+	top:0;
+
+	z-index:5;
+
 }
 
+#bottom_bar{
+	height:100px;
+	bottom:0px;
+	width:100%;
+	/*background-color: rgba(27,77,76,0.95);*/
+	z-index: 10;
+	position:absolute;
+
+}
+
+#wrapper {
+	position:relative;
+}
+
+table {
+	color:white;
+	font-weight: 300;
+	font-size:25px;
+	margin:0 auto;
+}
+
+td {
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+tr#labels{
+	background-color:rgb(22,77,76);
+}
+
+tr#vars{
+	background-color:rgba(27,77,76,0.95);
+}
