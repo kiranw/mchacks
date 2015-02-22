@@ -94,17 +94,17 @@ localStorage.email = email;
 /*==================================================================================================================*/
 
 
-startLat =  localStorage.startLat;
-startLong =  localStorage.startLong;
-endLat =  localStorage.endLat;
-endLat =  localStorage.endLong;
+startLat =  parseFloat(localStorage.startLat);
+startLong =  parseFloat(localStorage.startLong);
+endLat =  parseFloat(localStorage.endLat);
+endLat =  parseFloat(localStorage.endLong);
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 
 function initializeMap() {
  		directionsDisplay = new google.maps.DirectionsRenderer();
       var mapOptions = {
-
+ suppressInfoWindows:true, 		
           center: new google.maps.LatLng(startLat,startLong),
           zoom: 12,
           minZoom:6,
@@ -163,7 +163,7 @@ function initializeMap() {
         var map = new google.maps.Map(document.getElementById('map'),
             mapOptions);
 
-		directionsDisplay.setMap(map);
+		//directionsDisplay.setMap(map);
 
 
        var marker = new google.maps.Marker({
@@ -191,13 +191,15 @@ function calcRoute() {
   };
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+
+      	directionsDisplay.setDirections({map: map, directions: response});
     }
   });
 }
 
 
-
+	calcRoute();
+	console.log("calciling route");
    google.maps.event.addDomListener(window, 'load', initializeMap);
     
 
