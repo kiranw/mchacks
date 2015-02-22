@@ -30,6 +30,54 @@
 
 <div id="map"></div>
 
+<div class="modal fade" id="dangerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header", style = "text-align: center">
+				<h4 class="modal-title" id="myModalLabel">Danger Detected</h4>
+			</div> <!-- /.modal-header -->
+			<div class="modal-body">
+				<div id="danger">We have detected that you are taking an indirect route and entering an unsafe area. </br></div>
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+				<button class="dangerbutton1" id="gosmall" onClick="hideDanger()">DISMISS</button>
+				<button class="dangerbutton2" id="gosmall" onClick="submit()">CALL EMERGENCY SERVICES</button>
+			</div> <!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header", style = "text-align: center">
+				<h4 class="modal-title" id="myModalLabel">Share your Journey</h4>
+			</div> <!-- /.modal-header -->
+			<div class="modal-body">
+				<div id="description">Notify a friend of your trip status via an email containing a map of your journey.</br></div>
+				<div class="form-group">
+						<br>Name:</br>
+						<div class="input-group">
+							<input type="text" name="friendname" class="form-control" id="friendname" placeholder="enter your friend's name">
+						</div> <!-- /.input-group -->
+						<div class="error" id="friendemail_error" hidden>Try again! You entered an invalid email<br></div>
+						<div class="error" id="friendemail_error" hidden>You haven't entered an email address!</br></div>
+						<br>
+						<br>Email:</br>
+						<div class="input-group">
+							<input type="text" name="friendemail" class="form-control" id="friendemail" placeholder="enter your friend's email">
+						</div> <!-- /.input-group -->
+						<br>
+					</div> <!-- /.form-group -->
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+				<button class="form-control btn btn-primary" id="go" onClick="submit2()">SEND TRIP INFORMATION</button>
+			</div> <!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 </body>
 </html>

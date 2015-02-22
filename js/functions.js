@@ -10,6 +10,10 @@ function hideSplash() {
 	//$("#splash2").show();
 };
 
+function hideDanger() {
+  $("#dangerModal").hide();
+  //$("#splash2").show();
+};
 
 function coord() {
 	    if (navigator.geolocation) {
@@ -86,6 +90,30 @@ localStorage.email = email;
 
 };
 
+var friendname;
+var friendemail;
+
+function submit2() {
+  $('.error').hide();
+  friendname = $("input[name=friendname]").val();
+  friendemail = $("input[name=friendemail]").val();
+      if (friendemail === "") {
+        $("#friendemail_error").show();
+        $("input#friendemail").focus();
+        return false;
+      }
+
+  if ((friendemail.indexOf('.') > -1) && friendemail.indexOf("@" > -1)) {
+           console.log("we gud")
+    } else {
+    $("#friendinvalidEmail").show();
+    $("input#friendemail").focus();
+      return false; 
+    }
+
+    localStorage.friendname = friendname;
+    localStorage.friendemail = friendemail;
+}
 
 /*===================================================================================================================
 /*===================================================================================================================
