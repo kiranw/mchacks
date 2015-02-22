@@ -1,5 +1,8 @@
 var email;
-
+var startLat;
+var startLong;
+var endLat;
+var endLong;
 var itsOkay=false;
 
 function hideSplash() {
@@ -22,6 +25,7 @@ function showPosition(position) {
 		console.log("getting");
 		itsOkay=true;
 		$("#startloc").val("Position Recorded");
+		console.log(startLat+", "+startLong);
 	}
 
 
@@ -65,11 +69,39 @@ function submit() {
 		$("#invalidstop").show();
 		$("input#destination").focus();
 		return false;
+		console.log(endLat+", "+endLong);
 	}
-	console.log(startLat,startLong,endLat,endLong)
-	window.location.href = "main.html";
+	
+	
 
 };
 
+
+/*===================================================================================================================
+/*===================================================================================================================
+			 M A P   S C R I P T S
+/*===================================================================================================================
+/*==================================================================================================================*/
+console.log("getting here")
+console.log(startLat)
+
+
+
+function initializeMap() {
+     console.log(endLat);
+      var mapOptions = {
+
+          center: new google.maps.LatLng(startLat,startLong),
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map'),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initializeMap);
+    
+
+
+
+      
 
 
