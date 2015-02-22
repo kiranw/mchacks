@@ -19,35 +19,7 @@ $message = $client->account->messages->sendMessage(
 );
 print $message->sid;
 }
-
-function sendEmail(){
-	require '/Users/mohamedkane/Documents/mchacks/vendor/autoload.php';
-	use Mailgun\Mailgun;
-	# Instantiate the client.
-	$mgClient = new Mailgun('key-c0175aef999785edcd8f15b108d5b416');
-	$domain = "sandboxe541c833d11247adb0555d98709707b6.mailgun.org";
-	# Make the call to the client.
-	$result = $mgClient->sendMessage($domain, array(
-    	'from'    => 'Excited User <mhkane@mit.edu>',
-    	'to'      => 'Hassan <mhkane@mit.edu>',
-    	'subject' => 'Hello',
-    	'text'    => 'Testing some Mailgun awesomness!'
-	));
-
-	$mg = new Mailgun('key-c0175aef999785edcd8f15b108d5b416');
-$result = $mg->get("$domain/log", array('limit' => 25, 
-                                        'skip'  => 0));
-
-$httpResponseCode = $result->http_response_code;
-$httpResponseBody = $result->http_response_body;
-
-# Iterate through the results and echo the message IDs.
-$logItems = $result->http_response_body->items;
-foreach($logItems as $logItem){
-    echo $logItem->message_id . "\n";
-}
-}
-sendEmail();
+sendMessage();
 ?>
 
 </ul> 
