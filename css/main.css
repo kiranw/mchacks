@@ -159,11 +159,13 @@ outline: none;
 border:none !important;
 border-color:black !important;
 border-bottom:1px solid !important;
+
 background-color:transparent;
 box-shadow:none !important;
 border-radius:0px !important;
 color: white !important; 
 width: 75vw !important;
+
 font-size: 105%;
 
 
@@ -178,6 +180,8 @@ font-size: 105%;
 
 .modal-content {
    background-color: rgba(0, 0, 0, 0.6) !important;
+   display:block;
+   overflow: hidden;
 }
 
 .modal-backdrop {
