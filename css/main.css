@@ -42,6 +42,11 @@ body {
     background-position: center;
 }
 
+#getStarted {
+	background-color: rgba(255,255,255,0.2);
+	border-color: white;
+}
+
 #plan {
 	margin: 0 auto;
 	color:white;
@@ -70,24 +75,40 @@ body {
     height: 75%;
 }
 
-#splash2 {
-    border-radius: 25px;
-    text-align: center;
-    z-index: 5;
-    padding: 10px;
-    position: absolute;
-    top: 12%;
-    left: 12%;
+#getCoords {
+	background: rgba(255,255,255,0.3);
+	border-color: white;
+	border-radius: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 90%;
+	font-weight: 300;
+}
 
-    margin: 0 auto;
-    background: rgba(0, 0, 0, 0.5);
-    display: block;
-    width: 75%;
-    height: 75%;
+#go {
+	background: rgba(255,255,255,0.6);
+	border-color: white;
+	border-radius: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 130%;
+	color: #1B4D4C;
+}
+
+#myModalLabel {
+	color:white;
+	font-size: 225%;
+	font-weight: 300;
+}
+
+#email {
+	color:white;
 }
 
 .title {
 	font-size: 200%;
+}
+
+.form-group {
+	color: white;
 }
 
 button {
@@ -107,7 +128,7 @@ button:hover{
 
 .error {
 	text-decoration:none;
-	color:#f90e61;
+	color:#FFAC78;
 	font-weight:100;
 }
 
@@ -125,6 +146,7 @@ button:hover{
 
 .modal {
 	z-index:1 !important;
+	top:10%;
 }
 
 input[type="text"], textarea {
@@ -135,17 +157,31 @@ border-bottom:1px solid !important;
 background-color:transparent;
 box-shadow:none !important;
 border-radius:0px !important;
+color: white !important; 
+width: 75vw !important;
+font-size: 105%;
+
+
 /*border:1px solid #ccc !important;*/
 }
 
 .modal-body {
-   background-color: rgba(255,255,255,0.2) !important;
+	font-size: 150%;
+}
+
+.form-control::-webkit-input-placeholder { color: rgba(255,255,255,0.8); }
+
+.modal-content {
+   background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.modal-backdrop {
+	background-color: transparent;
 }
 
 .modal-header {
     padding:9px 15px;
     border-bottom:1px solid #eee;
-    background-color: rgba(255,255,255,0.2);
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topleft: 5px;
@@ -154,5 +190,3 @@ border-radius:0px !important;
      border-top-right-radius: 5px;
  }
 
-
->>>>>>> 72beb924df09777eb0d821d86a1fc8f9ae15ae07

@@ -172,26 +172,16 @@ function geolocate2() {
 					<span class="title" >SafeRide</span>
 					<p>#RideSafe </p>
 					<br>
-					<div id="getStarted"><button href="#" onClick="hideSplash()" data-toggle="modal" class="special" data-target="#registerModal">Get Started </a> </div>
+					<div><button href="#" id="getStarted" onClick="hideSplash()" data-toggle="modal" class="special" data-target="#registerModal">Get Started </a> </div>
 		</div>	
 	</div>
-
-
-<!--	<div id="splash2" hidden>
-		<div id="plan">
-					<span class="title" >Plan your SafeRide</span>
-					<br>
-					<div id="getStarted"><button href="#" onClick="hideSplash()" data-toggle="modal" class="special" data-target="#registerModal">Get Started </a> </div>
-		</div>	
-	</div>
--->
 	
 
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 
-			<div class="modal-header">
+			<div class="modal-header", style = "text-align: center">
 
 				<h4 class="modal-title" id="myModalLabel">Plan your SafeRide</h4>
 			</div> <!-- /.modal-header -->
@@ -200,29 +190,26 @@ function geolocate2() {
 				
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" name="email" class="form-control" id="email" placeholder="Email" autocomplete='off'/>
+							<input type="text" name="email" class="form-control" id="email" placeholder="email" autocomplete='off'/>
 							
 						</div>
 					</div> <!-- /.form-group -->
 					<div class="error" id="invalidEmail" hidden> Try again! You entered an invalid email address.</br></div>
 					<div class="error" id="email_error" hidden>You haven't entered an email address!</br></div>
-					<br>
+					<!--<br>-->
 
 					<div class="form-group">
 						<br>Start Location:</br>
-						enter your location or use current location
 						<div class="input-group">
-							
-							<input type="text" name="startloc" class="form-control" id="startloc" placeholder="enter location">
-							<button class="btn btn-primary" id="getCoords"  onClick="coord()">Use Current Location</button>
+							<input type="text" name="startloc" class="form-control" id="startloc" placeholder="enter start point">
 						</div> <!-- /.input-group -->
+						<br>
+						or &nbsp; &nbsp; <button class="btn btn-primary" id="getCoords"  onClick="coord()">Use Current Location</button>
 							
 					</div> <!-- /.form-group -->
 					<div class="error" id="invalidstart" hidden> Where are you though?</br></div>
 					<div class="error" id="mylocationerror" hidden>Geolocation is not supported by this browser. Enter manually!</br></div><br>
-
-
-
+					<!--<br>-->
 					<div class="form-group">
 						Destination:</br>
 						<div class="input-group">
@@ -238,7 +225,7 @@ function geolocate2() {
 			</div> <!-- /.modal-body -->
 
 			<div class="modal-footer">
-				<button class="form-control btn btn-primary" onClick="submit()">Go!</button>
+				<button class="form-control btn btn-primary" id="go" onClick="submit()">GO</button>
 
 			</div> <!-- /.modal-footer -->
 
