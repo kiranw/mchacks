@@ -28,12 +28,22 @@
 
 
 <body onLoad="initializeMap();">
+<div id="wrapper">
+	<div id="map"></div>
+	<div id="bottom_bar">
+		<table style="width:100%;">
+		  <tr id="labels">
+		    <td width="25%">ETA</td>
+		    <td width="40%">Expected Fare</td> 
+		    <td   width="35%" rowspan="2"><button id="button2">share ride</button></td>
+		  </tr>
+		  <tr id="vars">
+		    <td id="eta">0:00</td>
+		    <td id="fare">$0.00</td> 
 
-<div id="map"></div>
-<div id="bottom bar">
-		<table>
-
+		  </tr>
 		</table>
+	</div>
 </div>
 
 </body>
