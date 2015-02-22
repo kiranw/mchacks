@@ -346,9 +346,60 @@ function calcRoute() {
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
+      computeTotalDistance(response);
     }
+
+    function computeTotalDistance(result) {
+  var total = 0;
+  var time= 0;
+  var from=0;
+  var to=0;
+  var myroute = result.routes[0];
+  for (var i = 0; i < myroute.legs.length; i++) {
+    total += myroute.legs[i].distance.value;
+    time +=myroute.legs[i].duration.value;
+    from =myroute.legs[i].start_address;
+    to =myroute.legs[i].end_address;
+
+
+  }
+  //time = time.replace('hours','');
+  //time = time.replace('mins','');
+  time = Math.ceil(time/60.);
+  min = time%60;
+  hours = (time - min)/60;
+
+  endmin = min+m;
+  tothours = hours+h;
+  if (endmin>=60){
+  	endmin = endmin-60;
+  	hours = hours+1
+  }
+  if (tothours>12){
+  	tothours = tothours%12;
+  }
+
+  if (endmin<10){
+  	console.log("one dig")
+  	endmin = "0"+String(endmin);
+  }
+  $("#eta").html(tothours+":"+endmin);
+  total = total*0.000621371
+  var cost = 2.5;
+  	if (total>0.25){
+  		cost=cost+ (total-0.25)/.2*0.50
+  	}
+  	//console.log(cost)
+  	$("#fare").html("$"+cost.toFixed(2))
+}
+
   });
 }
+
+
+
+
+
 
 
 
@@ -406,6 +457,7 @@ function calcRoute2() {
   directionsService2.route(request2, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay2.setDirections(response);
+
     }
   });
 }
@@ -422,12 +474,13 @@ function calcRoute2() {
 
 google.maps.event.addDomListener(window, 'load', initializeMap);
       
-
+var startTime;
 
 function getTheTime(){
 	 date = new Date;
 	 h = date.getHours();
 	 m = date.getMinutes();
+	 startTime = [h,m] ;
 	 console.log(h+":"+m)
 }
 
