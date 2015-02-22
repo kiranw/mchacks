@@ -42,7 +42,35 @@ body {
     background-position: center;
 }
 
+#plan {
+	margin: 0 auto;
+	color:white;
+	font-size: 200%;
+	top: 25%;
+    left: 12%;
+	width: 75%;
+    height: 50%;
+    position: absolute;
+    background-position: center;
+}
+
 #splash {
+    border-radius: 25px;
+    text-align: center;
+    z-index: 5;
+    padding: 10px;
+    position: absolute;
+    top: 12%;
+    left: 12%;
+
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 75%;
+    height: 75%;
+}
+
+#splash2 {
     border-radius: 25px;
     text-align: center;
     z-index: 5;
@@ -71,14 +99,20 @@ button {
 }
 
 button:hover{
-	color:white;
+	
 	text-decoration: none;
 	background:rgba(255, 255, 255, 0.2);
+	color: white;
 }
 
 .error {
 	text-decoration:none;
 	color:#f90e61;
 	font-weight:100;
+}
+
+input {
+	border: 0;
+	border-bottom: 2px solid red;
 }
 

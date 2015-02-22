@@ -6,6 +6,7 @@ var itsOkay=false;
 
 function hideSplash() {
 	$("#splash").hide();
+	//$("#splash2").show();
 };
 
 
