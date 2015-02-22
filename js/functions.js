@@ -103,7 +103,7 @@ function submit2() {
         return false;
       }
 
-  if ((friendemail.indexOf('.') > -1) && friendemail.indexOf("@" > -1)) {
+  if ((/^\d+$/.test(friendemail))) {
            console.log("we gud")
     } else {
     $("#friendinvalidEmail").show();
