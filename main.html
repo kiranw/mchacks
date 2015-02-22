@@ -28,7 +28,26 @@
 
 
 <body onLoad="initializeMap();">
-<<<<<<< HEAD
+
+
+<div id="wrapper">
+	<div id="map"></div>
+	<div id="bottom_bar">
+		<table style="width:100%;">
+		  <tr id="labels">
+		    <td width="25%">ETA</td>
+		    <td width="40%">Expected Fare</td> 
+		    <td   width="35%" rowspan="2"><button id="button2" data-toggle="modal" class="special" data-target="#shareModal">share ride</button></td>
+		  </tr>
+		  <tr id="vars">
+		    <td id="eta">0:00</td>
+		    <td id="fare">$0.00</td> 
+
+		  </tr>
+		</table>
+	</div>
+</div>
+
 
 <div id="map"></div>
 
@@ -50,7 +69,7 @@
 </div><!-- /.modal -->
 
 
-<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header", style = "text-align: center">
@@ -80,25 +99,8 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-=======
-<div id="wrapper">
-	<div id="map"></div>
-	<div id="bottom_bar">
-		<table style="width:100%;">
-		  <tr id="labels">
-		    <td width="25%">ETA</td>
-		    <td width="40%">Expected Fare</td> 
-		    <td   width="35%" rowspan="2"><button id="button2">share ride</button></td>
-		  </tr>
-		  <tr id="vars">
-		    <td id="eta">0:00</td>
-		    <td id="fare">$0.00</td> 
 
-		  </tr>
-		</table>
-	</div>
-</div>
->>>>>>> 57b0993f0e0aebb67538ec53baf0b1e23fb7a929
+
 
 </body>
 </html>
