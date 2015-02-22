@@ -3,6 +3,8 @@ body {
 	overflow:hidden;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 200;
+	background-image:url("../graphics/background.jpg");
+	background-repeat:repeat-x;
 }
 
 #bg {
@@ -30,11 +32,13 @@ body {
 
 }
 
+
+
 #welcome {
 	margin: 0 auto;
 	color:white;
 	font-size: 200%;
-	top: 25%;
+	top: 20%;
     left: 12%;
 	width: 75%;
     height: 50%;
@@ -45,6 +49,7 @@ body {
 #getStarted {
 	background-color: rgba(255,255,255,0.2);
 	border-color: white;
+	margin-top: 10%;
 }
 
 #plan {
